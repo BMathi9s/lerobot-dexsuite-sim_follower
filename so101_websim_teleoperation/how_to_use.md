@@ -1,4 +1,4 @@
-````markdown
+
 # SO101 WebSim Follower + DexSuite Teleoperation
 
 ## 🔍 Summary (High-Level)
@@ -33,8 +33,7 @@
   - DexSuite repo (for `sim_websim_so100.py`).
 - Basic Git and terminal usage.
 
----
-
+'''
 ## 1. Get the Code
 
 ### Option A — Use the fork (quick start)
@@ -46,7 +45,6 @@ cd lerobot-dexsuite-sim_follower
 
 This repo already contains the `so101_websim_follower` integration.
 
----
 
 ### Option B — Integrate into a fresh LeRobot repo
 

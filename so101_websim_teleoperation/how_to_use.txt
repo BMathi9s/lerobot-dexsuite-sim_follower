@@ -1,0 +1,70 @@
+1. clone the fork of lerobot with the virtual follower devices : "https://github.com/BMathi9s/lerobot-dexsuite-sim_follower.git"
+
+or if you wish toi integrated into the new upto date lerobot repo: 
+
+1.1 add the "lerobot/so101_websim_teleoperation/copy of folder and changes made/so101_websim_follower" folder " just that this folder "so101_websim_follower"
+
+into the followers robots section "lerobot/src/lerobot/robots/so101_websim_follower"
+
+1.2make sure to add "    elif config.type == "so101_websim_follower":
+        from .so101_websim_follower import SO101WebSimFollower
+        
+        return SO101WebSimFollower(config)"
+
+        to the utils.py "lerobot/src/lerobot/robots/utils.py" there is an example in the "copy of folder and changes made""
+
+1.3 modify the teleop script and make sur eto add the new virtual device 
+"lerobot/src/lerobot/scripts/lerobot_teleoperate.py" " 
+"from lerobot.robots import (  # noqa: F401
+    Robot,
+    RobotConfig,
+    bi_so100_follower,
+    hope_jr,
+    koch_follower,
+    make_robot_from_config,
+    so100_follower,
+    so101_follower,
+    so101_websim_follower
+)"
+
+
+
+2. follow le robot so101 documentation to build and have a leader arm ready
+"https://huggingface.co/docs/lerobot/en/so101"
+
+3. make sure to follow all the guide for the so101 and install the feetch lib, calibrated the leader arm
+
+
+4. in the conda, pip install websockets
+
+5. test web server:  in a new terminal, acitvate the conda and call  
+
+python lerobot/src/lerobot/robots/so101_websim_follower/server_test/sim_ws_server.py
+
+or 
+
+python lerobot/so101_websim_teleoperation/sim_ws_server_example.py
+
+
+6. activate the teleoprator and see the terminal output 
+
+lerobot-teleoperate \
+  --robot.type=so101_websim_follower \
+  --robot.ws_url=ws://127.0.0.1:8765 \
+  --teleop.type=so101_leader \
+  --teleop.port=/dev/ttyACM0 \
+  --teleop.id=blue \
+  --display_data=false
+
+here the arguemtn make sure the id is the calinbratio0n id  and liek define all them 
+
+
+7. restart the server if needed check if you receive correctly 
+
+8. kill both, open dexsuite, lauch 
+
+"python dexsuite/scripts/teleoperation/lerobot/sim_websim_so100.py"
+
+9. launch the teleoprator arm 
+
+10 possible debug, make sure adress is the same etc 
